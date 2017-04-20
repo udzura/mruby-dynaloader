@@ -2,19 +2,22 @@ language: c
 compiler:
   - gcc
   - clang
+addons:
+  apt:
+    packages:
+      - rake
+      - bison
+      - git
+      - gperf
 env:
-  - MRUBY_VERSION=1.2.0
+  # - MRUBY_VERSION=1.3.0
   - MRUBY_VERSION=master
-matrix:
-  allow_failures:
-    - env: MRUBY_VERSION=master
+# matrix:
+#   allow_failures:
+#     - env: MRUBY_VERSION=master
 branches:
   only:
     - master
 
-before_install:
-  - sudo apt-get -qq update
-install:
-  - sudo apt-get -qq install rake bison git gperf
 script:
   - rake test
